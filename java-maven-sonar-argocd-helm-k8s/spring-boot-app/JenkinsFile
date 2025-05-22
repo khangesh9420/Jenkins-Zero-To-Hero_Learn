@@ -6,12 +6,6 @@ pipeline {
     }
   }
   stages {
-    stage('Clean Workspace') {
-      steps {
-        // this wipes out EVERYTHING under the current workspace
-        deleteDir()
-      }
-    }
     stage('Checkout') {
       steps {
         sh 'echo passed'
