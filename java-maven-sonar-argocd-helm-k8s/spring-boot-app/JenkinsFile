@@ -37,7 +37,9 @@ pipeline {
       steps {
         sh '''
           cd java-maven-sonar-argocd-helm-k8s/spring-boot-app
-          mvn sonar:sonar -Dsonar.token=squ_dd2a29f569dc6a9358c01d16bef30f18029d20db -Dsonar.host.url=${SONAR_URL}
+          mvn clean package sonar:sonar \
+            -Dsonar.token=squ_dd2a29f569dc6a9358c01d16bef30f18029d20db \
+            -Dsonar.host.url=http://192.168.240.1:9000
         '''
       }
     }
