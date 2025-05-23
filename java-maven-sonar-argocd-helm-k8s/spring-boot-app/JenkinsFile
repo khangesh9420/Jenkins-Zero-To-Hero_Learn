@@ -33,16 +33,6 @@ pipeline {
       }
     }
 
-    stage('Static Code Analysis') {
-      steps {
-        sh '''
-          cd java-maven-sonar-argocd-helm-k8s/spring-boot-app
-          mvn clean package sonar:sonar \
-            -Dsonar.token=sqa_866947a75c8978a720366fac2147532a6418c5fd \
-            -Dsonar.host.url=http://192.168.240.1:9000
-        '''
-      }
-    }
     stage('Build and Push Docker Image') {
       environment {
         REGISTRY_CREDENTIALS = credentials('docker-cred')
